@@ -35,7 +35,10 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://ftp.gnome.org/pub/GNOME/sources/gupnp/0.20/$PRGNAM-$VERSION.tar.xz
+mkdir -p ../src-deps
+wget -O ../src-deps/$PRGNAM-$VERSION.tar.xz -c http://download.gnome.org/sources/$PRGNAM/0.20/$PRGNAM-$VERSION.tar.xz
+ln -sf ../src-deps/$PRGNAM-$VERSION.tar.xz
+chown --reference="." -R ../src-deps/ ./
 
 NUMJOBS=${NUMJOBS:-" -j8 "}
 

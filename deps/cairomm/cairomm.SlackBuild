@@ -37,7 +37,10 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-wget -c http://cairographics.org/releases/$PRGNAM-$VERSION.tar.gz
+mkdir -p ../src-deps
+wget -O ../src-deps/$PRGNAM-$VERSION.tar.gz -c http://cairographics.org/releases/$PRGNAM-$VERSION.tar.gz
+ln -sf ../src-deps/$PRGNAM-$VERSION.tar.gz
+chown --reference="." -R ../src-deps/ ./
 
 NUMJOBS=${NUMJOBS:-" -j8 "}
 

@@ -31,7 +31,10 @@ BUILD=${BUILD:-1}
 TAG=${TAG:-_msb}
 ARCH=noarch
 
-wget -c http://www.cpan.org/authors/id/M/MI/MIROD/$SRCNAM-$VERSION.tar.gz
+mkdir -p ../src-deps
+wget -O ../src-deps/$SRCNAM-$VERSION.tar.gz -c http://www.cpan.org/authors/id/M/MI/MIROD/$SRCNAM-$VERSION.tar.gz
+ln -sf ../src-deps/$SRCNAM-$VERSION.tar.gz
+chown --reference="." -R ../src-deps/ ./
 
 CWD=$(pwd)
 TMP=${TMP:-/tmp/msb}

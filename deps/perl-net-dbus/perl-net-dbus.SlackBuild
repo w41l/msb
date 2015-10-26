@@ -30,7 +30,10 @@ VERSION=${VERSION:-1.1.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_msb}
 
-wget -c http://search.cpan.org/CPAN/authors/id/D/DA/DANBERR/$SRCNAM-$VERSION.tar.gz
+mkdir -p ../src-deps
+wget -O ../src-deps/$SRCNAM-$VERSION.tar.gz -c http://search.cpan.org/CPAN/authors/id/D/DA/DANBERR/$SRCNAM-$VERSION.tar.gz
+ln -sf ../src-deps/$SRCNAM-$VERSION.tar.gz
+chown --reference="." -R ../src-deps/ ./
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
