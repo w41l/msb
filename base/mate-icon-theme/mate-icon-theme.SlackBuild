@@ -30,7 +30,10 @@ TAG=${TAG:-_msb}
 
 ARCH=noarch
 
-wget -c http://pub.mate-desktop.org/releases/1.11/$PRGNAM-$VERSION.tar.xz
+mkdir -p ../src-base
+wget -O ../src-base/$PRGNAM-$VERSION.tar.xz -c http://pub.mate-desktop.org/releases/1.11/$PRGNAM-$VERSION.tar.xz
+ln -sf ../src-base/$PRGNAM-$VERSION.tar.xz
+chown --reference="." -R ../src-base/ ./
 
 NUMJOBS=${NUMJOBS:-" -j8 "}
 
